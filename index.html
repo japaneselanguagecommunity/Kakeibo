@@ -2,17 +2,21 @@
 <html lang="id" class="dark">
 <head>
     <meta charset="UTF-8">
-    <!-- UPDATE: Mengunci zoom untuk stabilitas UI mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kakeibo - Japan Financial Tracker</title>
     
-    <!-- FITUR BARU: PWA Meta Tags & Inline Manifest -->
-    <meta name="theme-color" content="#09090b">
+    <!-- FITUR BARU: PWA Custom Logo & Splash Screen -->
+    <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Kakeibo">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2830/2830284.png">
-    <link rel="manifest" href='data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22Kakeibo%20Tracker%22%2C%22short_name%22%3A%22Kakeibo%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23000000%22%2C%22theme_color%22%3A%22%2309090b%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F2830%2F2830284.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D'>
+    
+    <!-- Inline SVG Logo (Latar Putih, Teks Hitam, Titik Biru) -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%23ffffff'/%3E%3Ctext x='256' y='276' font-family='Inter, -apple-system, sans-serif' font-weight='800' font-size='100' fill='%230f172a' text-anchor='middle' letter-spacing='-2'%3EKakeibo%3Ctspan fill='%233b82f6'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-startup-image" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%23ffffff'/%3E%3Ctext x='256' y='276' font-family='Inter, -apple-system, sans-serif' font-weight='800' font-size='100' fill='%230f172a' text-anchor='middle' letter-spacing='-2'%3EKakeibo%3Ctspan fill='%233b82f6'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+    
+    <!-- JSON Manifest Inline -->
+    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22Kakeibo%20Tracker%22%2C%22short_name%22%3A%22Kakeibo%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23ffffff%22%2C%22theme_color%22%3A%22%23ffffff%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20512%20512%27%253E%253Crect%20width%3D%27512%27%20height%3D%27512%27%20fill%3D%27%2523ffffff%27%2F%253E%253Ctext%20x%3D%27256%27%20y%3D%27276%27%20font-family%3D%27Inter%2C%20-apple-system%2C%20sans-serif%27%20font-weight%3D%27800%27%20font-size%3D%27100%27%20fill%3D%27%25230f172a%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%27-2%27%253EKakeibo%253Ctspan%20fill%3D%27%25233b82f6%27%253E.%253C%2Ftspan%253E%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -23,7 +27,7 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         body { font-family: 'Inter', sans-serif; }
         ::-webkit-scrollbar { display: none; }
         .drag-active { border-color: #3b82f6 !important; background-color: rgba(59, 130, 246, 0.1) !important; }
@@ -55,10 +59,8 @@
 </head>
 <body class="flex justify-center bg-gray-100 dark:bg-zinc-950 transition-colors duration-300">
 
-    <!-- UPDATE RESPONSIVITAS: Menambahkan batasan tampilan floating phone untuk Desktop/Tablet via sm: prefix -->
     <div class="w-full max-w-md bg-white dark:bg-black min-h-screen sm:min-h-[95vh] sm:my-8 sm:rounded-[2.5rem] sm:border sm:border-slate-200 dark:sm:border-zinc-800 relative pb-20 shadow-2xl overflow-x-hidden sm:overflow-hidden transition-colors duration-300">
         
-        <!-- FITUR BARU: Sticky Hero Header dengan Glassmorphism -->
         <div class="sticky top-0 z-40 px-6 pt-10 pb-4 glass-header border-b border-slate-200 dark:border-transparent transition-colors duration-300">
             <div class="flex justify-between items-start">
                 <div>
@@ -71,14 +73,12 @@
                 </button>
             </div>
 
-            <!-- Utility Header (Inside Sticky) -->
             <div class="flex justify-between items-end mt-6">
                 <div>
                     <p class="text-[10px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-widest mb-1">Periode Aktif</p>
                     <p id="current-month-display" class="text-lg text-slate-800 dark:text-white font-bold tracking-wide transition-colors"></p>
                 </div>
                 <div class="flex items-center gap-2">
-                    <!-- Select Mata Uang -->
                     <div class="relative">
                         <button type="button" id="currency-btn" class="bg-slate-100 dark:bg-zinc-900 text-xs font-bold border border-slate-200 dark:border-zinc-800 rounded text-slate-600 dark:text-slate-300 py-1.5 px-3 flex items-center gap-1.5 focus:outline-none hover:bg-slate-200 dark:hover:bg-zinc-800 transition-colors">
                             <span id="currency-text">🇯🇵 YEN</span>
@@ -94,10 +94,8 @@
             </div>
         </div>
 
-        <!-- Dashboard / Balance Card -->
         <section class="px-6 mb-6 mt-6">
             <div class="glass-panel rounded-2xl p-6 relative overflow-hidden transition-colors duration-300">
-                <!-- LOGO KOIN EMAS -->
                 <div class="absolute top-2 right-0 p-4 opacity-50 text-6xl pointer-events-none text-amber-400 dark:text-amber-300 drop-shadow-md"><i class="ph-fill ph-coins"></i></div>
                 <div class="mb-1 relative z-10">
                     <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Saldo</p>
@@ -123,7 +121,6 @@
             </div>
         </section>
 
-        <!-- Form Tambah Transaksi -->
         <section class="px-6 mb-6">
             <div class="bg-white dark:bg-zinc-900 rounded-2xl p-5 border border-slate-200 dark:border-zinc-800 relative transition-colors duration-300 shadow-sm">
                 <div class="flex justify-between items-center mb-4 border-b border-slate-100 dark:border-zinc-800 pb-3">
@@ -203,7 +200,6 @@
             </div>
         </section>
 
-        <!-- Daftar Transaksi -->
         <section class="px-6">
             <div class="flex justify-between items-center mb-3">
                 <h3 class="text-sm font-semibold text-slate-800 dark:text-slate-200 transition-colors">Riwayat Terakhir</h3>
@@ -222,7 +218,6 @@
             </div>
         </section>
 
-        <!-- Footer & CTA JLC -->
         <footer class="mt-8 mb-6 pt-6 border-t border-slate-200 dark:border-zinc-800 text-center px-6 transition-colors duration-300">
             <p class="text-xs text-slate-500 mb-4">Dikembangkan oleh <br><span class="font-semibold text-slate-700 dark:text-slate-300">Japanese Language Community Team</span></p>
             <a href="https://japanese-language-community.lovable.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center text-xs font-bold bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 text-slate-800 dark:text-white py-2.5 px-6 rounded-full border border-slate-200 dark:border-zinc-700 transition-colors shadow-sm">
@@ -230,7 +225,6 @@
             </a>
         </footer>
 
-        <!-- Modal Settings (Kategori) -->
         <div id="settings-modal" class="hidden fixed inset-0 bg-slate-900/40 dark:bg-black/80 backdrop-blur-sm z-50 flex justify-center items-end sm:items-center">
             <div class="bg-white dark:bg-zinc-900 w-full max-w-md h-[80vh] sm:h-auto sm:max-h-[80vh] rounded-t-2xl sm:rounded-2xl flex flex-col border border-slate-200 dark:border-zinc-800 shadow-2xl transition-colors">
                 <div class="p-5 border-b border-slate-200 dark:border-zinc-800 flex justify-between items-center">
@@ -258,7 +252,6 @@
             </div>
         </div>
 
-        <!-- Modal Riwayat Bulanan -->
         <div id="history-modal" class="hidden fixed inset-0 bg-slate-900/40 dark:bg-black/80 backdrop-blur-sm z-50 flex justify-center items-start pt-10 sm:items-center sm:pt-0 overflow-y-auto">
             <div class="bg-white dark:bg-zinc-900 w-[95%] max-w-md rounded-2xl flex flex-col border border-slate-200 dark:border-zinc-800 shadow-2xl mb-10 transition-colors">
                 <div class="p-5 border-b border-slate-200 dark:border-zinc-800 flex justify-between items-center sticky top-0 bg-white dark:bg-zinc-900 rounded-t-2xl z-10">
@@ -271,7 +264,6 @@
             </div>
         </div>
 
-        <!-- Modal Detail Transaksi -->
         <div id="detail-modal" class="hidden fixed inset-0 bg-slate-900/40 dark:bg-black/80 backdrop-blur-sm z-50 flex justify-center items-end sm:items-center">
             <div class="bg-white dark:bg-zinc-900 w-full max-w-md rounded-t-2xl sm:rounded-2xl flex flex-col border border-slate-200 dark:border-zinc-800 shadow-2xl max-h-[90vh] overflow-y-auto transition-colors">
                 <div class="p-5 border-b border-slate-200 dark:border-zinc-800 flex justify-between items-center sticky top-0 bg-white dark:bg-zinc-900 z-10 transition-colors">
@@ -301,7 +293,6 @@
             </div>
         </div>
 
-        <!-- Modal Confirm -->
         <div id="confirm-modal" class="hidden fixed inset-0 bg-slate-900/40 dark:bg-black/80 backdrop-blur-sm z-[70] flex justify-center items-center">
             <div class="bg-white dark:bg-zinc-900 w-[90%] max-w-sm rounded-2xl p-6 border border-slate-200 dark:border-zinc-800 text-center shadow-2xl transition-colors">
                 <h3 id="confirm-title" class="text-lg font-bold text-slate-900 dark:text-white mb-2"></h3>
@@ -313,7 +304,6 @@
             </div>
         </div>
 
-        <!-- OCR Loading -->
         <div id="ocr-loading" class="hidden fixed inset-0 bg-slate-900/60 dark:bg-black/90 backdrop-blur-sm z-[80] flex flex-col justify-center items-center">
             <i class="ph ph-spinner-gap animate-spin text-5xl text-blue-500 mb-4"></i>
             <h3 class="text-white font-bold text-lg">Memindai Angka...</h3>
@@ -323,7 +313,6 @@
     </div>
 
     <script>
-        // --- CORE DATA CONFIGURATION ---
         const DB_KEY = 'kakeibo_data_v2';
         const DEFAULT_CURRENCY = 'JPY';
         
@@ -353,7 +342,6 @@
             customCategories: { expense: [], income: [] }
         };
 
-        // --- RUNTIME VARIABLES ---
         let currentActiveMonth = ''; 
         let editingTransactionId = null;
         let confirmCallback = null;
@@ -361,7 +349,6 @@
         let currentHistoryFilter = 'income'; 
         let currentAttachedImageBase64 = null;
 
-        // --- DOM ELEMENTS ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const currencyBtn = document.getElementById('currency-btn');
@@ -388,7 +375,6 @@
         const confirmModal = document.getElementById('confirm-modal');
         const historyModal = document.getElementById('history-modal');
         
-        // --- FORMATTERS ---
         const getFormatParams = () => {
             switch(state.currency) {
                 case 'IDR': return { locale: 'id-ID', curr: 'IDR', fraction: 0 };
@@ -418,7 +404,6 @@
         const formatDate = (dateStr) => new Date(dateStr).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
         const generateId = () => '_' + Math.random().toString(36).substr(2, 9);
 
-        // --- THEME LOGIC ---
         const applyTheme = (theme) => {
             if (theme === 'dark') {
                 document.documentElement.classList.add('dark');
@@ -437,9 +422,7 @@
             applyTheme(isDark ? 'light' : 'dark');
         });
 
-        // --- INITIALIZATION ---
         const init = () => {
-            // Theme Init
             const savedTheme = localStorage.getItem('kakeibo_theme') || 'dark';
             applyTheme(savedTheme);
 
@@ -449,7 +432,6 @@
             currentActiveMonth = getMonthKey(today.toISOString().split('T')[0]);
             document.getElementById('current-month-display').textContent = getDisplayMonth(currentActiveMonth);
 
-            // OPTIMASI QA LOCALSTORAGE: Menggunakan Try-Catch untuk mencegah crash akibat JSON korup
             const savedData = localStorage.getItem(DB_KEY);
             if (savedData) {
                 try {
@@ -458,7 +440,7 @@
                     state.customCategories = parsed.customCategories || { expense: [], income: [] };
                     if (parsed.currency) state.currency = parsed.currency;
                 } catch (error) {
-                    console.error("Kesalahan parsing memori lokal, mereset profil data.", error);
+                    console.error("Kesalahan parsing memori lokal.", error);
                 }
             }
             
@@ -527,7 +509,6 @@
             document.getElementById('opt-income').classList.toggle('hidden', val === 'income');
         };
 
-        // --- FILTER TAB LOGIC ---
         const setHistoryFilter = (type) => {
             currentHistoryFilter = type;
             const tabExp = document.getElementById('tab-expense');
@@ -543,7 +524,6 @@
             renderTransactionList();
         };
 
-        // --- CORE UI RENDERING ---
         const updateCategoryOptions = () => {
             const selectedType = document.querySelector('input[name="type"]:checked').value;
             const prevValue = categorySelect.value;
@@ -626,7 +606,6 @@
             });
         };
 
-        // --- FORM DATA LOGIC ---
         const handleFormSubmit = (e) => {
             e.preventDefault();
             formError.classList.add('hidden');
@@ -674,7 +653,6 @@
             renderApp();
         };
 
-        // --- IMAGE DRAG & DROP + COMPRESSION (CANVAS API) ---
         const dropZone = document.getElementById('drop-zone');
         const fileInput = document.getElementById('image-upload');
         const imgPreviewContainer = document.getElementById('image-preview-container');
@@ -726,7 +704,6 @@
             imgPreviewContainer.classList.add('hidden');
         };
 
-        // --- MONTHLY HISTORY MODAL ---
         const openHistoryModal = () => {
             const listEl = document.getElementById('monthly-history-list');
             listEl.innerHTML = '';
@@ -767,7 +744,6 @@
         };
         const closeHistoryModal = () => historyModal.classList.add('hidden');
 
-        // --- DETAIL MODAL LOGIC ---
         const openDetail = (id) => {
             const t = state.transactions.find(x => x.id === id);
             if(!t) return;
@@ -848,7 +824,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
 
-        // --- UTILS & MODALS ---
         const showConfirm = (title, message, callback) => {
             document.getElementById('confirm-title').textContent = title;
             document.getElementById('confirm-message').textContent = message;
@@ -892,7 +867,6 @@
 
         const saveData = () => localStorage.setItem(DB_KEY, JSON.stringify(state));
 
-        // --- OCR LOGIC ---
         const triggerScan = () => document.getElementById('receipt-scanner').click();
         const processReceipt = async (event) => {
             const file = event.target.files[0];
@@ -913,7 +887,6 @@
             } finally { document.getElementById('ocr-loading').classList.add('hidden'); event.target.value = ''; }
         };
 
-        // --- PWA SERVICE WORKER (BLOB INJECTION) ---
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const swCode = `self.addEventListener('fetch', event => {});`;
