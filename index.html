@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kakeibo - Japan Financial Tracker</title>
     
-    <!-- FITUR BARU: PWA Custom Logo & Splash Screen -->
     <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Kakeibo">
     
-    <!-- Inline SVG Logo (Latar Putih, Teks Hitam, Titik Biru) - UKURAN DIPERKECIL -->
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%23ffffff'/%3E%3Ctext x='256' y='270' font-family='Inter, -apple-system, sans-serif' font-weight='800' font-size='72' fill='%230f172a' text-anchor='middle' letter-spacing='-2'%3EKakeibo%3Ctspan fill='%233b82f6'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
     <link rel="apple-touch-startup-image" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%23ffffff'/%3E%3Ctext x='256' y='270' font-family='Inter, -apple-system, sans-serif' font-weight='800' font-size='72' fill='%230f172a' text-anchor='middle' letter-spacing='-2'%3EKakeibo%3Ctspan fill='%233b82f6'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
     
-    <!-- JSON Manifest Inline - PENGHAPUSAN TEKS SPLASH SCREEN -->
     <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22%20%22%2C%22short_name%22%3A%22Kakeibo%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23ffffff%22%2C%22theme_color%22%3A%22%23ffffff%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20512%20512%27%253E%253Crect%20width%3D%27512%27%20height%3D%27512%27%20fill%3D%27%2523ffffff%27%2F%253E%253Ctext%20x%3D%27256%27%20y%3D%27270%27%20font-family%3D%27Inter%2C%20-apple-system%2C%20sans-serif%27%20font-weight%3D%27800%27%20font-size%3D%2772%27%20fill%3D%27%25230f172a%27%20text-anchor%3D%27middle%27%20letter-spacing%3D%27-2%27%253EKakeibo%253Ctspan%20fill%3D%27%25233b82f6%27%253E.%253C%2Ftspan%253E%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,7 +29,6 @@
         ::-webkit-scrollbar { display: none; }
         .drag-active { border-color: #3b82f6 !important; background-color: rgba(59, 130, 246, 0.1) !important; }
         
-        /* Glassmorphism Classes */
         .glass-header {
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(24px);
@@ -67,7 +63,6 @@
                     <h1 class="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2 transition-colors duration-300">Kakeibo<span class="text-blue-500">.</span></h1>
                     <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed transition-colors duration-300">Pencatatan finansial presisi untuk pelajar dan pekerja di Jepang. Pantau arus kas tanpa friksi.</p>
                 </div>
-                <!-- Theme Toggle Button -->
                 <button id="theme-toggle" class="shrink-0 p-1.5 rounded-full bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-amber-400 border border-slate-200 dark:border-zinc-800 transition-colors shadow-sm ml-4">
                     <i id="theme-icon" class="ph-fill ph-sun text-base"></i>
                 </button>
@@ -220,9 +215,14 @@
 
         <footer class="mt-8 mb-6 pt-6 border-t border-slate-200 dark:border-zinc-800 text-center px-6 transition-colors duration-300">
             <p class="text-xs text-slate-500 mb-4">Dikembangkan oleh <br><span class="font-semibold text-slate-700 dark:text-slate-300">Japanese Language Community Team</span></p>
-            <a href="https://japanese-language-community.lovable.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center text-xs font-bold bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 text-slate-800 dark:text-white py-2.5 px-6 rounded-full border border-slate-200 dark:border-zinc-700 transition-colors shadow-sm">
-                Kunjungi Website JLC
-            </a>
+            <div class="flex flex-col gap-3 items-center">
+                <a href="https://japanese-language-community.lovable.app/" target="_blank" rel="noopener noreferrer" class="w-full max-w-[220px] inline-flex items-center justify-center text-xs font-bold bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 text-slate-800 dark:text-white py-2.5 px-6 rounded-full border border-slate-200 dark:border-zinc-700 transition-colors shadow-sm">
+                    Kunjungi Website JLC
+                </a>
+                <a href="https://saweria.co/yourjlc" target="_blank" rel="noopener noreferrer" class="w-full max-w-[220px] inline-flex items-center justify-center text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors">
+                    <i class="ph ph-coffee mr-2 text-base"></i> Dukung Pengembangan Projek
+                </a>
+            </div>
         </footer>
 
         <div id="settings-modal" class="hidden fixed inset-0 bg-slate-900/40 dark:bg-black/80 backdrop-blur-sm z-50 flex justify-center items-end sm:items-center">
